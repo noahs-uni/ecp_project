@@ -1,6 +1,5 @@
 using:
 felix NAND
-felix OR
 magic NOT
 magic NOR
 
@@ -9,17 +8,20 @@ c_out= ((NOT (a NAND b)) NOR (s NAND c)) OR ((a NAND b) NOR (s NOR c))
 t1 = a NAND b
 t2 = s NAND c
 t3 = s NOR c
-t4 = not t1 // a AND b
+t4 = NOT t1 // a AND b
 t5 = t2 NOR t4 // (s NAND c) NOR (a AND b)	
 t6 = t1 NOR t3 // (a NAND b) NOR (s NOR c)
-cout = t5 OR t6
+t10 = t5 NOR t6
+cout = NOT t10
 
 s_out= (NOT (a NAND b) XOR s XOR x)
 // using felix OR/NAND combo to get XOR
-t7 = t3 OR s
-t7 = t3 NAND s
-s_out = t7 OR c
-s_out = t7 NAND c
+t7 = t4 NOR s
+t8 = NOT t7
+t8 = t4 NAND s
+t9 = t8 NOR c
+s_out = NOT t9
+s_out = t8 NAND c
 
 Approximation Ideas:
 1. Assume a NAND b = 1 / a AND b = 0

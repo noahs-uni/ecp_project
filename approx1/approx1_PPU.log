@@ -1,0 +1,43 @@
+Circuit: * C:\users\noah\Documents\ECP\project\approx1\approx1_PPU.asc
+
+Vsout1: Removing PWL point (3e-005,0)
+V2: Removing PWL point (3e-005,0)
+V2: Removing PWL point (0.00015,1)
+Vcout1: Removing PWL point (3e-005,0)
+V1: Removing PWL point (3e-005,0)
+V1: Removing PWL point (0.00012,0)
+V16: Removing PWL point (6e-005,1)
+V16: Removing PWL point (0.00012,0)
+V15: Removing PWL point (3e-005,0)
+V15: Removing PWL point (0.00012,0)
+V14: Removing PWL point (3e-005,0)
+V14: Removing PWL point (0.00012,1)
+V7: Removing PWL point (3e-005,0)
+WARNING: Node N009 is floating.
+
+WARNING: Less than two connections to node T2.  This node is used by E:X8:1.
+WARNING: Less than two connections to node T1.  This node is used by E:X9:1.
+WARNING: Less than two connections to node S_IN.  This node is used by E:X10:1.
+WARNING: Less than two connections to node C_IN.  This node is used by E:X11:1.
+WARNING: Less than two connections to node C_OUT.  This node is used by E:X1:1.
+WARNING: Less than two connections to node S_OUT.  This node is used by E:X2:1.
+Direct Newton iteration for .op point succeeded.
+
+Date: Wed Jan 28 00:51:36 2026
+Total elapsed time: 0.339 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2420
+traniter = 2417
+tranpoints = 1156
+accept = 1132
+rejected = 24
+matrix size = 91
+fillins = 6
+solver = Normal
+Matrix Compiler1: 2.82 KB object code size  0.6/0.4/[0.3]
+Matrix Compiler2: 5.54 KB object code size  0.5/0.6/[0.4]
+
+

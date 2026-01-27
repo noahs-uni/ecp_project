@@ -35,12 +35,12 @@ assuming a NAND b = 1 => a AND b = 0 : saving lots of memristors and steps, sinc
 
 cout= s AND c
 	t1 = s NAND c
-	cout = NOT t2
+	cout = NOT t1
 
 sout= s XOR x
 	// using felix OR/NAND combo to get XOR
-	t7 = c NOR s
-	sout = NOT t7
+	t2 = c NOR s
+	sout = NOT t2
 	sout = c NAND s
 
 Approx. 2
@@ -53,12 +53,12 @@ cout: same as exact
 	t4 = NOT t1 // a AND b
 	t5 = t2 NOR t4 // (s NAND c) NOR (a AND b)	
 	t6 = t1 NOR t3 // (a NAND b) NOR (s NOR c)
-	t10 = t5 NOR t6
-	cout = NOT t10
+	t7 = t5 NOR t6
+	cout = NOT t7
 
 s_out= (NOT (a NAND b) NAND s NAND x)
-	t7 = t4 NAND s
-	s_out = t7 NAND c
+	t8 = t4 NAND s
+	s_out = t8 NAND c
 	
 Approx. 3
 cout: same as exact

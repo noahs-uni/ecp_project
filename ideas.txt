@@ -1,33 +1,68 @@
 using:
 felix NAND
+felix OR: not feasible because bad 1's
 magic NOT
 magic NOR
 
 c_out= ((NOT (a NAND b)) NOR (s NAND c)) OR ((a NAND b) NOR (s NOR c))
+	t1 = a NAND b
+	t2 = s NAND c
+	t3 = s NOR c
+	t4 = NOT t1 // a AND b
+	t5 = t2 NOR t4 // (s NAND c) NOR (a AND b)	
+	t6 = t1 NOR t3 // (a NAND b) NOR (s NOR c)
+	t7 = t5 NOR t6
+	cout = NOT t7
 
-t1 = a NAND b
-t2 = s NAND c
-t3 = s NOR c
-t4 = NOT t1 // a AND b
-t5 = t2 NOR t4 // (s NAND c) NOR (a AND b)	
-t6 = t1 NOR t3 // (a NAND b) NOR (s NOR c)
-t10 = t5 NOR t6
-cout = NOT t10
-
-s_out= (NOT (a NAND b) XOR s XOR x)
-// using felix OR/NAND combo to get XOR
-t7 = t4 NOR s
-t8 = NOT t7
-t8 = t4 NAND s
-t9 = t8 NOR c
-s_out = NOT t9
-s_out = t8 NAND c
+s_out= (NOT (a NAND b) XOR s XOR c)
+	// using OR/NAND combo to get XOR
+	t8 = NOT t3
+	t8 = s NAND c // s XOR c
+	t9 = t8 NOR t4
+	s_out = NOT t9
+	s_out = t8 NAND t4 // t8 XOR t4
+	
+	
 
 Approximation Ideas:
 1. Assume a NAND b = 1 / a AND b = 0
 2. Replace felix XOR by OR / NAND
 3. c_out = !s_out
 4. Calculate Approximation bias => combine positive and negative bias PPUs for behavioral model 
+
+Approx. 1
+assuming a NAND b = 1 => a AND b = 0 : saving lots of memristors and steps, since NOR(1,x)=0 ; NOR(0,x)=NOT(x) ; XOR(0,x)=x
+
+cout= s AND c
+	t1 = s NAND c
+	cout = NOT t2
+
+sout= s XOR x
+	// using felix OR/NAND combo to get XOR
+	t7 = c NOR s
+	sout = NOT t7
+	sout = c NAND s
+
+Approx. 2
+NAND/OR instead of XOR (depending on whether we need positive or negative bias)
+
+cout: same as exact
+	t1 = a NAND b
+	t2 = s NAND c
+	t3 = s NOR c
+	t4 = NOT t1 // a AND b
+	t5 = t2 NOR t4 // (s NAND c) NOR (a AND b)	
+	t6 = t1 NOR t3 // (a NAND b) NOR (s NOR c)
+	t10 = t5 NOR t6
+	cout = NOT t10
+
+s_out= (NOT (a NAND b) NAND s NAND x)
+	t7 = t4 NAND s
+	s_out = t7 NAND c
+	
+Approx. 3
+cout: same as exact
+sout = !cout
 
 
 old ideas:

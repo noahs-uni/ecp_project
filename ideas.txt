@@ -1,0 +1,66 @@
+using:
+felix NAND
+felix OR
+magic NOT
+magic NOR
+
+c_out= ((NOT (a NAND b)) NOR (s NAND c)) OR ((a NAND b) NOR (s NOR c))
+
+t1 = a NAND b
+t2 = s NAND c
+t3 = s NOR c
+t4 = not t1 // a AND b
+t5 = t2 NOR t4 // (s NAND c) NOR (a AND b)	
+t6 = t1 NOR t3 // (a NAND b) NOR (s NOR c)
+cout = t5 OR t6
+
+s_out= (NOT (a NAND b) XOR s XOR x)
+// using felix OR/NAND combo to get XOR
+t7 = t3 OR s
+t7 = t3 NAND s
+s_out = t7 OR c
+s_out = t7 NAND c
+
+Approximation Ideas:
+1. Assume a NAND b = 1 / a AND b = 0
+2. Replace felix XOR by OR / NAND
+3. c_out = !s_out
+4. Calculate Approximation bias => combine positive and negative bias PPUs for behavioral model 
+
+
+old ideas:
+c_out=majority((a and b), s_in, c_in)
+majority as in exercise 
+magic and (not in crossbar, but should still work here)
+
+s_out=(a and b) xor s_in xor c_in
+felix xor
+c = (a or b)
+c = (a nand b)
+(see paper ccad18...)
+
+step 1:
+t1 = a and b
+t2 = s or c
+
+step 2:
+t3 = minority(t1, s, c)
+
+step 3:
+cout = not(t3)
+t2 = s nand c // t2 = s xor c
+
+step 4:
+sout = t2 or t1
+
+step 5:
+sout = t2 nand t1
+
+approx 1:
+assume a and b = 0 => cout = s and c; sum = s xor c
+
+approx 2:
+just or/nand instead of xor
+
+approx 3:
+calculate cout => sout = !cout

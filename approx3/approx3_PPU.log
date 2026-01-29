@@ -1,0 +1,93 @@
+Circuit: * C:\users\noah\Documents\ECP\project\approx3\approx3_PPU.asc
+
+V24: Removing PWL point (9e-005,0)
+V23: Removing PWL point (9e-005,0)
+V22: Removing PWL point (9e-005,0)
+V21: Removing PWL point (9e-005,0)
+V20: Removing PWL point (3e-005,0)
+V20: Removing PWL point (9e-005,1)
+V20: Removing PWL point (0.00015,0)
+V20: Removing PWL point (0.00036,0)
+V19: Removing PWL point (3e-005,0)
+V19: Removing PWL point (0.00015,0)
+V19: Removing PWL point (0.00036,0)
+V18: Removing PWL point (3e-005,0)
+V18: Removing PWL point (9e-005,1)
+V18: Removing PWL point (0.00015,0)
+V18: Removing PWL point (0.00036,0)
+V17: Removing PWL point (3e-005,0)
+V17: Removing PWL point (0.00015,0)
+V17: Removing PWL point (0.00036,0)
+V16: Removing PWL point (9e-005,0)
+V16: Removing PWL point (0.00024,0)
+V15: Removing PWL point (3e-005,0)
+V15: Removing PWL point (0.00024,0)
+V14: Removing PWL point (3e-005,0)
+V14: Removing PWL point (0.00012,0)
+V14: Removing PWL point (0.00021,0)
+V7: Removing PWL point (3e-005,0)
+V7: Removing PWL point (0.00021,0)
+V6: Removing PWL point (3e-005,0)
+V6: Removing PWL point (0.00015,0)
+V6: Removing PWL point (0.00024,0)
+V6: Removing PWL point (0.00033,0)
+V2: Removing PWL point (3e-005,0)
+V2: Removing PWL point (0.00024,0)
+V2: Removing PWL point (0.00033,0)
+Vsout: Removing PWL point (3e-005,0)
+Vsout: Removing PWL point (0.0003,0)
+V13: Removing PWL point (3e-005,0)
+V13: Removing PWL point (0.00024,1)
+V13: Removing PWL point (0.0003,0)
+Vcout: Removing PWL point (3e-005,0)
+V12: Removing PWL point (3e-005,0)
+V12: Removing PWL point (0.0003,0)
+V10: Removing PWL point (3e-005,0)
+V10: Removing PWL point (0.00021,1)
+V10: Removing PWL point (0.00027,0)
+V9: Removing PWL point (3e-005,0)
+V9: Removing PWL point (0.00027,0)
+V8: Removing PWL point (3e-005,0)
+V8: Removing PWL point (0.00015,1)
+V8: Removing PWL point (0.00021,0)
+V4: Removing PWL point (3e-005,0)
+V4: Removing PWL point (0.00027,0)
+V3: Removing PWL point (3e-005,0)
+V3: Removing PWL point (0.00027,0)
+V1: Removing PWL point (3e-005,0)
+V1: Removing PWL point (0.00021,0)
+WARNING: Node N024 is floating.
+
+WARNING: Less than two connections to node T4.  This node is used by E:X2:1.
+WARNING: Less than two connections to node T5.  This node is used by E:X3:1.
+WARNING: Less than two connections to node T6.  This node is used by E:X4:1.
+WARNING: Less than two connections to node C_OUT.  This node is used by E:X6:1.
+WARNING: Less than two connections to node S_OUT.  This node is used by E:X7:1.
+WARNING: Less than two connections to node T3.  This node is used by E:X1:1.
+WARNING: Less than two connections to node T2.  This node is used by E:X8:1.
+WARNING: Less than two connections to node T1.  This node is used by E:X9:1.
+WARNING: Less than two connections to node S_IN.  This node is used by E:X10:1.
+WARNING: Less than two connections to node C_IN.  This node is used by E:X11:1.
+WARNING: Less than two connections to node B.  This node is used by E:X12:1.
+WARNING: Less than two connections to node A.  This node is used by E:X13:1.
+Direct Newton iteration for .op point succeeded.
+
+Date: Thu Jan 29 23:06:39 2026
+Total elapsed time: 0.359 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2644
+traniter = 2641
+tranpoints = 1225
+accept = 1188
+rejected = 37
+matrix size = 181
+fillins = 12
+solver = Normal
+Thread vector: 15.8/12.1[4] 2.0/2.3[1] 5.0/2.7[4] 0.3/2.3[1]  2592/500
+Matrix Compiler1: 5.63 KB object code size  1.4/0.7/[0.5]
+Matrix Compiler2: 11.05 KB object code size  0.7/1.1/[0.5]
+
+

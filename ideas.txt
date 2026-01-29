@@ -61,8 +61,39 @@ s_out= (NOT (a NAND b) NAND s NAND x)
 	s_out = t8 NAND c
 	
 Approx. 3
-cout: same as exact
+cout: same as exact (sout instead of t7)
 sout = !cout
+
+c_out= ((NOT (a NAND b)) NOR (s NAND c)) OR ((a NAND b) NOR (s NOR c))
+	t1 = a NAND b
+	t2 = s NAND c
+	t3 = s NOR c
+	t4 = NOT t1 // a AND b
+	t5 = t2 NOR t4 // (s NAND c) NOR (a AND b)	
+	t6 = t1 NOR t3 // (a NAND b) NOR (s NOR c)
+	sout = t5 NOR t6
+	cout = NOT sout
+
+Approx. 4
+assume b = a: a NAND b => a NAND a => NOT a
+
+c_out= (a NOR (s NAND c)) OR ((NOT a) NOR (s NOR c))
+	t1 = NOT a
+	t2 = s NAND c
+	t3 = s NOR c
+	t4 = t2 NOR a	
+	t5 = t1 NOR t3 // (NOT a) NOR (s NOR c)
+	t6 = t4 NOR t5
+	cout = NOT t6
+
+s_out= (NOT (a NAND b) XOR s XOR c)
+	// using OR/NAND combo to get XOR
+	t7 = NOT t3
+	t7 = s NAND c // s XOR c
+	t8 = t7 NOR a
+	s_out = NOT t8
+	s_out = t7 NAND a // t7 XOR a
+
 
 
 old ideas:

@@ -84,22 +84,25 @@ WARNING: Less than two connections to node T8.  This node is used by E:X14:1.
 WARNING: Less than two connections to node T9.  This node is used by E:X15:1.
 Direct Newton iteration for .op point succeeded.
 
-Date: Wed Jan 28 00:24:18 2026
-Total elapsed time: 0.433 seconds.
+energy: INTEG((-v(n001)*i(v23)) + (-v(n002)*i(v21)) + (-v(n003)*i(v19)) + (-v(n004)*i(v17)) + (-v(n005)*i(v15)) + (-v(n006)*i(v7)) + (-v(n007)*i(v2)) + (-v(n008)*i(v1)) + (-v(n009)*i(v3)) + (-v(n010)*i(v4)) + (-v(n011)*i(v5)) + (-v(n015)*i(vcout)) + (-v(n012)*i(vsout)) + (-v(n013)*i(vsout2)) + (-v(n014)*i(vsout1)))=2.92645e-007 FROM 0 TO 0.00042
+
+
+Date: Tue Feb 03 10:36:53 2026
+Total elapsed time: 0.448 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 3088
-traniter = 3085
-tranpoints = 1384
-accept = 1314
-rejected = 70
+totiter = 3120
+traniter = 3117
+tranpoints = 1393
+accept = 1318
+rejected = 75
 matrix size = 226
 fillins = 15
 solver = Normal
-Thread vector: 14.1/9.4[6] 2.0/2.6[1] 5.0/2.8[6] 0.3/1.5[1]  2592/500
-Matrix Compiler1: 7.04 KB object code size  2.0/1.1/[0.5]
-Matrix Compiler2: 13.80 KB object code size  1.1/1.8/[0.5]
+Thread vector: 13.9/8.2[6] 1.8/2.8[1] 5.0/3.6[6] 0.3/2.2[1]  2592/500
+Matrix Compiler1: 7.04 KB object code size  2.8/1.0/[0.6]
+Matrix Compiler2: 13.80 KB object code size  1.6/1.4/[0.5]
 
 

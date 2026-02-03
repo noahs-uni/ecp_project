@@ -4,7 +4,7 @@ felix OR: not feasible because bad 1's
 magic NOT
 magic NOR
 
-c_out= ((NOT (a NAND b)) NOR (s NAND c)) OR ((a NAND b) NOR (s NOR c))
+c_out= NOT (((NOT (a NAND b)) NOR (s NAND c)) NOR ((a NAND b) NOR (s NOR c)))
 	t1 = a NAND b
 	t2 = s NAND c
 	t3 = s NOR c
@@ -14,7 +14,7 @@ c_out= ((NOT (a NAND b)) NOR (s NAND c)) OR ((a NAND b) NOR (s NOR c))
 	t7 = t5 NOR t6
 	cout = NOT t7
 
-s_out= (NOT (a NAND b) XOR s XOR c)
+s_out= s XOR c XOR (NOT (a NAND b))
 	// using OR/NAND combo to get XOR
 	t8 = NOT t3
 	t8 = s NAND c // s XOR c

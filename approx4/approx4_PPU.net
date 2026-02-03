@@ -1,0 +1,89 @@
+* C:\users\noah\Documents\ECP\project\approx4\approx4_PPU.asc
+XX2 T4 N007 N020 memsim+ecm_nominal params: w_init=3n
+XX3 T5 N008 N021 memsim+ecm_nominal params: w_init=3n
+XX4 T6 N009 N022 memsim+ecm_nominal params: w_init=3n
+XX5 T7 N010 N023 memsim+ecm_nominal params: w_init=3n
+XX6 C_OUT N013 N024 memsim+ecm_nominal params: w_init=3n
+V1 N007 0 PWL file=V4.csv
+V3 N008 0 PWL file=V5.csv
+V4 N009 0 PWL file=V6.csv
+V5 N010 0 PWL file=V7.csv
+S2 N020 N040 N033 0 MYSW
+V8 N033 0 PWL file=Vsw4.csv
+S3 N021 N040 N034 0 MYSW
+V9 N034 0 PWL file=Vsw5.csv
+S4 N022 N040 N035 0 MYSW
+V10 N035 0 PWL file=Vsw6.csv
+S5 N023 N040 N036 0 MYSW
+V11 N036 0 PWL file=Vsw7.csv
+SWCOUT N024 N040 N037 0 MYSW
+V12 N037 0 PWL file=VswCOUT.csv
+XX7 S_OUT N011 N025 memsim+ecm_nominal params: w_init=3n
+VCOUT N013 0 PWL file=VCOUT.csv
+SWSOUT N025 N040 N038 0 MYSW
+V13 N038 0 PWL file=VswSOUT.csv
+VSOUT N011 0 PWL file=VSOUT.csv
+XX1 T3 N006 N019 memsim+ecm_nominal params: w_init=3n
+V2 N006 0 PWL file=V3.csv
+S1 N019 N040 N032 0 MYSW
+V6 N032 0 PWL file=Vsw3.csv
+XX8 T2 N005 N018 memsim+ecm_nominal params: w_init=3n
+V7 N005 0 PWL file=V2.csv
+S6 N018 N040 N031 0 MYSW
+V14 N031 0 PWL file=Vsw2.csv
+XX9 T1 N004 N017 memsim+ecm_nominal params: w_init=3n
+V15 N004 0 PWL file=V1.csv
+S7 N017 N040 N030 0 MYSW
+V16 N030 0 PWL file=Vsw1.csv
+XX10 S_IN N003 N016 memsim+ecm_nominal params: w_init=0n
+V17 N003 0 PWL file=VSIN.csv
+S8 N016 N040 N029 0 MYSW
+V18 N029 0 PWL file=VswSIN.csv
+XX11 C_IN N002 N015 memsim+ecm_nominal params: w_init=0n
+V19 N002 0 PWL file=VCIN.csv
+S9 N015 N040 N028 0 MYSW
+V20 N028 0 PWL file=VswCIN.csv
+XX13 A N001 N014 memsim+ecm_nominal params: w_init=0n
+V23 N001 0 PWL file=VA.csv
+S11 N014 N040 N027 0 MYSW
+V24 N027 0 PWL file=VswA.csv
+XX14 T8 N012 N026 memsim+ecm_nominal params: w_init=3n
+SWSOUT2 N026 N040 N039 0 MYSW
+V26 N039 0 PWL file=Vsw8.csv
+VSOUT2 N012 0 PWL file=V8.csv
+
+* block symbol definitions
+.subckt memsim+ecm_nominal s Vp Vn
+B1 0 w I=G_on(V(Vp,Vn))
+B2 0 w I=G_off(V(Vp,Vn))
+C1 w 0 1
+D1 w N003 idealD
+D2 N004 w idealD
+V1 N003 0 {w_off}
+R1 N001 0 {R_on}
+Fv N002 Vn Bm -1
+Bm N001 0 V=vs(V(Vp,Vn),V(w))
+E1 s 0 w 0 {1/w_off}
+R2 Vp N002 1µ
+V2 N004 0 {w_on}
+.ic V(w)={w_init}
+.model idealD D(Ron=1f Roff=100G Vfwd=0.1f)
+.param alpha_off=2  w_off=3n
+.param alpha_on=2  w_on=0
+.param w_init=0n
+.param R_on=174 R_off=1933.15
+.param v_off=1.56v v_on=-0.39v
+.param k_off=406.488m k_on=-62.37m
+.func G_off(v) {k_off*pow( (v/v_off-1),alpha_off)*u(v-v_off)}
+.func G_on(v) {k_on*pow( (v/v_on-1) ,alpha_on)*u(v_on-v)}
+.param lambda=(R_off/R_on)
+.func vs(v,w) {v/(1+(lambda-1)*(w_off-w)/(w_off-w_on) )}
+.ends memsim+ecm_nominal
+
+.model D D
+.lib C:\Program Files (x86)\LTC\LTspiceIV\lib\cmp\standard.dio
+.tran 390u
+.model MYSW SW(Ron=1n Roff=1000meg Vt=.5)
+.meas energy INTEG ((-V(n001)*I(V23)) + (-V(n002)*I(V19)) + (-V(n003)*I(V17)) + (-V(n004)*I(V15)) + (-V(n005)*I(V7)) + (-V(n006)*I(V2)) + (-V(n007)*I(V1)) + (-V(n008)*I(V3)) + (-V(n009)*I(V4)) + (-V(n010)*I(V5)) + (-V(n013)*I(Vcout)) + (-V(n011)*I(Vsout)) + (-V(n012)*I(Vsout2)))
+.backanno
+.end

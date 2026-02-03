@@ -25,14 +25,14 @@ def exact_ppu(a, b, c_in = 0, s_in = 0):
     s_out = t8 ^ t4    
     return s_out, c_out
 
-def approx1_ppu(a, b, c_in = 0, s_in = 0):
+def approx3_ppu(a, b, c_in = 0, s_in = 0):
     t1 = not (s_in and c_in)
     c_out = not t1
 
     s_out = c_in ^ s_in    
     return s_out, c_out
 
-def approx2_ppu(a, b, c_in = 0, s_in = 0):
+def approx1_ppu(a, b, c_in = 0, s_in = 0):
     t1 = not (a and b)
     t2 = not (c_in and s_in)
     t3 = not (c_in or s_in)
@@ -46,7 +46,7 @@ def approx2_ppu(a, b, c_in = 0, s_in = 0):
     s_out = not (t8 and c_in)
     return s_out, c_out
 
-def approx3_ppu(a, b, c_in = 0, s_in = 0):
+def approx4_ppu(a, b, c_in = 0, s_in = 0):
     t1 = not (a and b)
     t2 = not (c_in and s_in)
     t3 = not (c_in or s_in)
@@ -57,7 +57,7 @@ def approx3_ppu(a, b, c_in = 0, s_in = 0):
     c_out = not s_out
     return s_out, c_out
 
-def approx4_ppu(a, b, c_in = 0, s_in = 0):
+def approx2_ppu(a, b, c_in = 0, s_in = 0):
     t1 = not a
     t2 = not (s_in and c_in)
     t3 = not (s_in or c_in)
@@ -78,7 +78,7 @@ ppu_dict = {
     'approx4': approx4_ppu,
 }
 
-def mul(a_int, b_int, ppu_type='exact', WIDTH = 8):
+def mul(a_int, b_int, ppu_type='exact', WIDTH = 8, NR_EXACT=3):
     a = int_to_bits(a_int, WIDTH)
     b = int_to_bits(b_int, WIDTH)
 
@@ -96,7 +96,12 @@ def mul(a_int, b_int, ppu_type='exact', WIDTH = 8):
     # Generate partial products
     for i in range(1, WIDTH):
         for j in range(i, i + WIDTH - 1):
-            s, c = ppu_dict[ppu_type](a[j - i], b[i], carry_bits[i - 1][j - 1], sum_bits[i - 1][j])
+
+            if(j < i + WIDTH - (1 + NR_EXACT)):
+                s, c = ppu_dict[ppu_type](a[j - i], b[i], carry_bits[i - 1][j - 1], sum_bits[i - 1][j])
+            else:
+                s, c = ppu_dict['exact'](a[j - i], b[i], carry_bits[i - 1][j - 1], sum_bits[i - 1][j])
+            
             sum_bits[i][j] = s
             carry_bits[i][j] = c
 
@@ -118,18 +123,19 @@ def mul(a_int, b_int, ppu_type='exact', WIDTH = 8):
     return bits_to_int(result_bits)
 
 if __name__ == "__main__":
+    WIDTH = 8
     for ppu_type in ['exact', 'approx1', 'approx2', 'approx3', 'approx4']:
-        WIDTH = 8
-        with open(f'LUT_{ppu_type}.csv', 'w', newline='') as f:
-            writer = csv.writer(f)
-            
-            # Write header row
-            writer.writerow([''] + list(range(256)))
-            
-            # Write each row with a as row label
-            for a in range(pow(2, WIDTH)):
-                row = [a]
-                for b in range(pow(2, WIDTH)):
-                    product = mul(a, b, ppu_type=ppu_type, WIDTH=WIDTH)
-                    row.append(product)
-                writer.writerow(row)
+        for i in range(1, WIDTH - 1):
+            with open(f'LUT_{ppu_type}_{i}_{WIDTH - i - 1}.csv', 'w', newline='') as f:
+                writer = csv.writer(f)
+                
+                # Write header row
+                writer.writerow([''] + list(range(256)))
+                
+                # Write each row with a as row label
+                for a in range(pow(2, WIDTH)):
+                    row = [a]
+                    for b in range(pow(2, WIDTH)):
+                        product = mul(a, b, ppu_type=ppu_type, WIDTH=WIDTH, NR_EXACT=i)
+                        row.append(product)
+                    writer.writerow(row)

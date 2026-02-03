@@ -7,17 +7,13 @@ V21: Removing PWL point (9e-005,0)
 V20: Removing PWL point (3e-005,0)
 V20: Removing PWL point (9e-005,1)
 V20: Removing PWL point (0.00015,0)
-V20: Removing PWL point (0.00036,0)
 V19: Removing PWL point (3e-005,0)
 V19: Removing PWL point (0.00015,0)
-V19: Removing PWL point (0.00036,0)
 V18: Removing PWL point (3e-005,0)
 V18: Removing PWL point (9e-005,1)
 V18: Removing PWL point (0.00015,0)
-V18: Removing PWL point (0.00036,0)
 V17: Removing PWL point (3e-005,0)
 V17: Removing PWL point (0.00015,0)
-V17: Removing PWL point (0.00036,0)
 V16: Removing PWL point (9e-005,0)
 V16: Removing PWL point (0.00024,0)
 V15: Removing PWL point (3e-005,0)
@@ -30,30 +26,21 @@ V7: Removing PWL point (0.00021,0)
 V6: Removing PWL point (3e-005,0)
 V6: Removing PWL point (0.00015,0)
 V6: Removing PWL point (0.00024,0)
-V6: Removing PWL point (0.00033,0)
 V2: Removing PWL point (3e-005,0)
 V2: Removing PWL point (0.00024,0)
-V2: Removing PWL point (0.00033,0)
 Vsout: Removing PWL point (3e-005,0)
-Vsout: Removing PWL point (0.0003,0)
 V13: Removing PWL point (3e-005,0)
 V13: Removing PWL point (0.00024,1)
-V13: Removing PWL point (0.0003,0)
 Vcout: Removing PWL point (3e-005,0)
 V12: Removing PWL point (3e-005,0)
-V12: Removing PWL point (0.0003,0)
 V10: Removing PWL point (3e-005,0)
 V10: Removing PWL point (0.00021,1)
-V10: Removing PWL point (0.00027,0)
 V9: Removing PWL point (3e-005,0)
-V9: Removing PWL point (0.00027,0)
 V8: Removing PWL point (3e-005,0)
 V8: Removing PWL point (0.00015,1)
 V8: Removing PWL point (0.00021,0)
 V4: Removing PWL point (3e-005,0)
-V4: Removing PWL point (0.00027,0)
 V3: Removing PWL point (3e-005,0)
-V3: Removing PWL point (0.00027,0)
 V1: Removing PWL point (3e-005,0)
 V1: Removing PWL point (0.00021,0)
 WARNING: Node N024 is floating.
@@ -72,22 +59,25 @@ WARNING: Less than two connections to node B.  This node is used by E:X12:1.
 WARNING: Less than two connections to node A.  This node is used by E:X13:1.
 Direct Newton iteration for .op point succeeded.
 
-Date: Thu Jan 29 23:06:39 2026
-Total elapsed time: 0.359 seconds.
+energy: INTEG((-v(n001)*i(v23)) + (-v(n002)*i(v21)) + (-v(n003)*i(v19)) + (-v(n004)*i(v17)) + (-v(n005)*i(v15)) + (-v(n006)*i(v7)) + (-v(n007)*i(v2)) + (-v(n008)*i(v1)) + (-v(n009)*i(v3)) + (-v(n010)*i(v4)) + (-v(n012)*i(vcout)) + (-v(n011)*i(vsout)))=1.73988e-007 FROM 0 TO 0.00027
+
+
+Date: Tue Feb 03 11:29:18 2026
+Total elapsed time: 0.350 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 2644
-traniter = 2641
-tranpoints = 1225
-accept = 1188
-rejected = 37
+totiter = 2873
+traniter = 2870
+tranpoints = 1299
+accept = 1240
+rejected = 59
 matrix size = 181
 fillins = 12
 solver = Normal
-Thread vector: 15.8/12.1[4] 2.0/2.3[1] 5.0/2.7[4] 0.3/2.3[1]  2592/500
-Matrix Compiler1: 5.63 KB object code size  1.4/0.7/[0.5]
-Matrix Compiler2: 11.05 KB object code size  0.7/1.1/[0.5]
+Thread vector: 13.4/8.8[4] 1.3/1.9[1] 3.1/3.3[1] 0.3/1.5[1]  2592/500
+Matrix Compiler1: 5.63 KB object code size  1.8/0.6/[0.5]
+Matrix Compiler2: 11.05 KB object code size  1.0/1.3/[0.5]
 
 
